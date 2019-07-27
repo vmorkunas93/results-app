@@ -23,7 +23,6 @@ const Scores = () => {
 
   return (
     <Container>
-      {console.log(scores)}
       {scores.length !== 0
         ? scores.map(score => (
             <Card
