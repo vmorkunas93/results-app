@@ -14,3 +14,7 @@
 .container {
   margin: 20px auto;
 }
+
+.modal-body {
+  color: #000;
+}
