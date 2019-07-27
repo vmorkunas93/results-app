@@ -116,7 +116,7 @@ const AddScore = () => {
         <ModalBody>Sėkmingai įrašyta</ModalBody>
         <ModalFooter>
           <Button color="info" tag={Link} to="/scores">
-            Peržiūrėti rezultatus
+            Peržiūrėti rezulttaattus
           </Button>
         </ModalFooter>
       </Modal>
