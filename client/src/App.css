@@ -19,3 +19,7 @@
 .modal-body {
   color: #000;
 }
+
+.card {
+  max-width: 40rem;
+}

@@ -30,7 +30,7 @@ const Scores = () => {
               outline
               color="info"
               key={score._id}
-              style={{ margin: '5px 0px' }}
+              style={{ margin: '5px auto' }}
             >
               <CardTitle>
                 <Moment style={{ float: 'left' }} fromNow>
