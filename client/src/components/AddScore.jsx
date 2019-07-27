@@ -113,10 +113,16 @@ const AddScore = () => {
       </Form>
       <Modal isOpen={showModal} toggle={() => setShowModal(!showModal)}>
         <ModalHeader toggle={() => setShowModal(!showModal)} />
-        <ModalBody>Sėkmingai įrašyta</ModalBody>
+        <ModalBody>
+          Sėkmingai įrašyta
+          <br />
+          <br />
+          <br />
+          Paziurim
+        </ModalBody>
         <ModalFooter>
           <Button color="info" tag={Link} to="/scores">
-            Peržiūrėti rezulttaattus
+            Peržiūrėti rezultatus
           </Button>
         </ModalFooter>
       </Modal>
