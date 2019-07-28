@@ -29,6 +29,9 @@ const NavBar = () => {
               <NavLink tag={Link} to="/scores">
                 Rezultatai
               </NavLink>
+              <NavLink tag={Link} to="/stats">
+                Statistika
+              </NavLink>
               <NavLink tag={Link} to="/addScore">
                 Įvesti rezultatą
               </NavLink>

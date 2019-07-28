@@ -6,37 +6,69 @@ const Team = require('../models/Team');
 const User = require('../models/User');
 const Score = require('../models/Score');
 
-router.get('/getTeams', (req, res) => {
-  Team.find()
-    .sort({ teamName: 1 })
-    .then(teams => res.json(teams));
+router.get('/getTeams', async (req, res) => {
+  const teams = await Team.find().sort({ teamName: 1 });
+  res.json(teams);
 });
 
-router.get('/getUsers', (req, res) => {
-  User.find()
-    .sort({ name: 1 })
-    .then(users => res.json(users));
+router.get('/getUsers', async (req, res) => {
+  const users = await User.find().sort({ name: 1 });
+  res.json(users);
 });
 
-router.get('/getScores', (req, res) => {
+router.get('/getScores', async (req, res) => {
   const limit = parseInt(req.query.limit);
 
-  Score.find()
+  const scores = await Score.find()
     .sort({ createdAt: -1 })
-    .limit(limit)
-    .then(teams => res.json(teams));
+    .limit(limit);
+
+  res.json(scores);
 });
 
-router.post('/addScore', (req, res) => {
+router.get('/getStats', async (req, res) => {
+  const stats = {};
+  const winners = [];
+  const counts = {};
+
+  const kiek = await Score.countDocuments({});
+  stats['gamesCount'] = kiek;
+
+  const scores = await Score.find({});
+
+  scores.forEach(score => {
+    if (score.score1.points > score.score2.points) {
+      winners.push(score.score1.player);
+    } else {
+      winners.push(score.score2.player);
+    }
+  });
+
+  winners.forEach(name => {
+    counts[name] = (counts[name] || 0) + 1;
+  });
+
+  stats['ErikasWon'] = counts['Erikas'];
+  stats['VytautasWon'] = counts['Vytautas'];
+  stats['DariusWon'] = counts['Darius'];
+
+  res.json(stats);
+});
+
+router.post('/addScore', async (req, res) => {
   const score = new Score(req.body);
-
-  score.save().then(score => res.json(score));
+  score.save();
+  res.json(score);
 });
 
-router.delete('/deleteScore/:id', (req, res) => {
-  Score.findById(req.params.id).then(score =>
-    score.remove().then(() => res.json({ succes: true }))
-  );
+router.delete('/deleteScore/:id', async (req, res) => {
+  try {
+    const score = await Score.findById(req.params.id);
+    score.remove();
+    res.json(score);
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 module.exports = router;
