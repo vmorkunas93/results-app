@@ -16,10 +16,10 @@ const Scores = () => {
     fetchScores();
   }, [perPage]);
 
-  const onDelete = id => {
-    setScores(scores.filter(score => score._id !== id));
-    axios.delete(`/deleteScore/${id}`);
-  };
+  // const onDelete = id => {
+  //   setScores(scores.filter(score => score._id !== id));
+  //   axios.delete(`/deleteScore/${id}`);
+  // };
 
   return (
     <Container>
@@ -36,14 +36,14 @@ const Scores = () => {
                 <Moment style={{ float: 'left' }} fromNow>
                   {score.createdAt}
                 </Moment>
-                <Button
+                {/* <Button
                   style={{ float: 'right' }}
                   color="danger"
                   size="sm"
                   onClick={() => onDelete(score._id)}
                 >
                   &times;
-                </Button>
+                </Button> */}
               </CardTitle>
               {score.score1.points > score.score2.points ? (
                 <CardTitle>
