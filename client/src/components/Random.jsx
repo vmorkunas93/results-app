@@ -17,7 +17,11 @@ const Random = () => {
   const onClick = () => {
     const randomNumber = Math.floor(Math.random() * 30);
 
+<<<<<<< HEAD
     setRandomTeam(teams[randomNumber].logo);
+=======
+    setRandomTeam(teams[randomNumber].teamName);
+>>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
   };
 
   return (
@@ -25,7 +29,11 @@ const Random = () => {
       <Button style={{ marginBottom: '20px' }} color="info" onClick={onClick}>
         Išrinkti komandą
       </Button>
+<<<<<<< HEAD
       {randomTeam && <div><img src={randomTeam} alt="random-logo" /></div>}
+=======
+      <h3>{randomTeam}</h3>
+>>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
     </Container>
   );
 };

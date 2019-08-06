@@ -16,7 +16,11 @@ const Home = () => {
 
   return (
     <Container>
+<<<<<<< HEAD
       <h5>Paskutiniai rezultatai</h5>
+=======
+      <h3>Sveiki atvykę</h3>
+>>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
       {scores.map(score => (
         <Card
           body
@@ -35,6 +39,7 @@ const Home = () => {
               <b>{score.score1.player}</b> - {score.score2.player}
             </CardTitle>
           ) : (
+<<<<<<< HEAD
               <CardTitle>
                 {score.score1.player} - <b>{score.score2.player}</b>
               </CardTitle>
@@ -55,6 +60,28 @@ const Home = () => {
                 </b><img src={score.score2.logo} alt="team-logo" className="team-logo" />
               </CardText>
             )}
+=======
+            <CardTitle>
+              {score.score1.player} - <b>{score.score2.player}</b>
+            </CardTitle>
+          )}
+
+          {score.score1.points > score.score2.points ? (
+            <CardText>
+              <b>
+                {score.score1.team} {score.score1.points}
+              </b>{' '}
+              - {score.score2.points} {score.score2.team}
+            </CardText>
+          ) : (
+            <CardText>
+              {score.score1.team} {score.score1.points} -{' '}
+              <b>
+                {score.score2.points} {score.score2.team}
+              </b>
+            </CardText>
+          )}
+>>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
         </Card>
       ))}
     </Container>
