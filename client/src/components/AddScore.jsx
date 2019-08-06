@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
-=======
-import Select from 'react-select';
->>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
 import {
   Container,
   Button,
@@ -37,49 +33,23 @@ const AddScore = () => {
     e.preventDefault();
     const score1 = {
       player: e.target.user1.value,
-<<<<<<< HEAD
       team: e.target.team1.options[e.target.team1.selectedIndex].text,
       logo: e.target.team1.value,
-=======
-      team: e.target.team1.value,
->>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
       points: e.target.team1score.value
     };
 
     const score2 = {
       player: e.target.user2.value,
-<<<<<<< HEAD
       team: e.target.team2.options[e.target.team2.selectedIndex].text,
       logo: e.target.team2.value,
-=======
-      team: e.target.team2.value,
->>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
       points: e.target.team2score.value
     };
 
     const score = { score1, score2 };
-<<<<<<< HEAD
-
-=======
->>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
     axios.post('/addScore', score);
     setShowModal(true);
   };
 
-<<<<<<< HEAD
-=======
-  let teamOptions = [];
-  let userOptions = [];
-
-  teams.forEach((team, index) => {
-    teamOptions[index] = { value: team.teamName, label: team.teamName };
-  });
-
-  users.forEach((user, index) => {
-    userOptions[index] = { value: user.name, label: user.name };
-  });
-
->>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
   return (
     <Container>
       <Form onSubmit={onSubmit}>
@@ -87,7 +57,6 @@ const AddScore = () => {
           <Label>Pirmas žaidėjas</Label>
         </FormGroup>
         <FormGroup>
-<<<<<<< HEAD
           <Input type="select" name="user1" >
             <option value="">Vardas</option>
             {users.map(user =>
@@ -106,22 +75,6 @@ const AddScore = () => {
               </option>
             )}
           </Input>
-=======
-          <Select
-            placeholder="Vardas"
-            isSearchable={false}
-            name="user1"
-            options={userOptions}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Select
-            placeholder="Komanda"
-            isSearchable={false}
-            name="team1"
-            options={teamOptions}
-          />
->>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
         </FormGroup>
         <FormGroup>
           <Input type="number" name="team1score" placeholder="Taškai" />
@@ -130,7 +83,6 @@ const AddScore = () => {
           <Label>Antras žaidėjas</Label>
         </FormGroup>
         <FormGroup>
-<<<<<<< HEAD
           <Input type="select" name="user2" >
             <option value="">Vardas</option>
             {users.map(user =>
@@ -149,22 +101,6 @@ const AddScore = () => {
               </option>
             )}
           </Input>
-=======
-          <Select
-            placeholder="Vardas"
-            isSearchable={false}
-            name="user2"
-            options={userOptions}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Select
-            placeholder="Komanda"
-            isSearchable={false}
-            name="team2"
-            options={teamOptions}
-          />
->>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
         </FormGroup>
         <FormGroup>
           <Input type="number" name="team2score" placeholder="Taškai" />

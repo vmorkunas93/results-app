@@ -9,13 +9,10 @@ const TeamSchema = new Schema({
   abbrev: {
     type: String,
     required: true
-<<<<<<< HEAD
   },
   logo: {
     type: String,
     required: true
-=======
->>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
   }
 })
 

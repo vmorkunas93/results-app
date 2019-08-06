@@ -17,10 +17,7 @@ const NavBar = () => {
     <div>
       <Navbar color="dark" dark>
         <NavbarBrand tag={Link} to="/" className="mr-auto">
-<<<<<<< HEAD
           <img className="logo" src="http://loodibee.com/wp-content/uploads/nba-logo-transparent-300x300.png" alt="Logo" title="Logo" />
-=======
->>>>>>> c2e698ffebe04754d1dbc65ad88909f62382c22f
           Results App
         </NavbarBrand>
         <NavbarToggler
