@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+  background-color: #fff;
+  color: #333;
+  min-height: 100vh;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.modal-body {
+  color: #000;
+}
+
+.card {
+  max-width: 40rem;
+}
+
+.logo {
+  margin: 0;
+  height: 4.5rem;
+}
+
+.team-logo {
+  width: 2.5rem;
+}
+
+.random-team-logo {
+  width: 15rem;
+}
