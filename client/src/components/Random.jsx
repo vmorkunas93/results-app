@@ -15,7 +15,7 @@ const Random = () => {
   }, []);
 
   const onClick = () => {
-    const randomNumber = Math.floor(Math.random() * 30);
+    const randomNumber = Math.floor(Math.random() * 32);
 
     setRandomTeam(teams[randomNumber].logo);
   };
