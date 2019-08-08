@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { ToastProvider } from 'react-toast-notifications'
 import Home from './components/Home';
 import addScore from './components/AddScore';
 import Random from './components/Random';
@@ -10,16 +11,18 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <NavBar />
-        <Route exact path="/" component={Home} />
-        <Route path="/random/" component={Random} />
-        <Route path="/addScore/" component={addScore} />
-        <Route path="/scores/" component={Scores} />
-        <Route path="/stats/" component={Stats} />
-      </Router>
-    </div>
+    <ToastProvider placement="top-center">
+      <div className="App">
+        <Router>
+          <NavBar />
+          <Route exact path="/" component={Home} />
+          <Route path="/random/" component={Random} />
+          <Route path="/addScore/" component={addScore} />
+          <Route path="/scores/" component={Scores} />
+          <Route path="/stats/" component={Stats} />
+        </Router>
+      </div>
+    </ToastProvider>
   );
 }
 

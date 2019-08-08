@@ -28,16 +28,17 @@ const NavBar = () => {
           <Nav navbar>
             <NavItem>
               <NavLink tag={Link} to="/scores">
-                Rezultatai
+                <i className="fas fa-star"></i> Rezultatai
               </NavLink>
               <NavLink tag={Link} to="/stats">
-                Statistika
+                {/* <i className="fas fa-chart-line"></i> */}
+                <i className="far fa-chart-bar"></i> Statistika
               </NavLink>
               <NavLink tag={Link} to="/addScore">
-                Įvesti rezultatą
+                <i className="fas fa-plus"></i> Įvesti rezultatą
               </NavLink>
               <NavLink tag={Link} to="/random">
-                Atsitiktinė komanda
+                <i className="fas fa-random"></i> Atsitiktinė komanda
               </NavLink>
             </NavItem>
           </Nav>

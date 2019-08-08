@@ -32,3 +32,8 @@
 .team-logo {
   width: 2.5rem;
 }
+
+.loading {
+  margin-left: 1rem;
+  font-size: 1.8rem;
+}

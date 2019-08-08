@@ -12,12 +12,14 @@ import {
   ModalBody,
   ModalFooter
 } from 'reactstrap';
+import { useToasts } from 'react-toast-notifications'
 import { Link } from 'react-router-dom';
 
 const AddScore = () => {
   const [teams, setTeams] = useState([]);
   const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const { addToast } = useToasts()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,8 +48,13 @@ const AddScore = () => {
     };
 
     const score = { score1, score2 };
-    axios.post('/addScore', score);
-    setShowModal(true);
+
+    if (!score1.player || !score1.team || !score1.logo || !score1.points || !score2.player || !score2.team || !score2.logo || !score2.points) {
+      addToast('Neįvesta visa reikalinga informacija', { appearance: 'error', autoDismiss: true })
+    } else {
+      axios.post('/addScore', score);
+      setShowModal(true);
+    }
   };
 
   return (

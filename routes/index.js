@@ -29,7 +29,8 @@ router.get('/getScores', async (req, res) => {
 router.get('/getStats', async (req, res) => {
   const stats = {};
   const winners = [];
-  const counts = {};
+  const played = [];
+  const won = {};
 
   const kiek = await Score.countDocuments({});
   stats['gamesCount'] = kiek;
@@ -42,15 +43,24 @@ router.get('/getStats', async (req, res) => {
     } else {
       winners.push(score.score2.player);
     }
+    played.push(score.score1.player, score.score2.player)
   });
 
   winners.forEach(name => {
-    counts[name] = (counts[name] || 0) + 1;
+    won[name] = (won[name] || 0) + 1;
   });
 
-  stats['ErikasWon'] = counts['Erikas'];
-  stats['VytautasWon'] = counts['Vytautas'];
-  stats['DariusWon'] = counts['Darius'];
+  played.forEach(name => {
+    played[name] = (played[name] || 0) + 1;
+  });
+
+  stats['ErikasWon'] = won['Erikas'];
+  stats['VytautasWon'] = won['Vytautas'];
+  stats['DariusWon'] = won['Darius'];
+
+  stats['ErikasPlayed'] = played['Erikas'];
+  stats['VytautasPlayed'] = played['Vytautas'];
+  stats['DariusPlayed'] = played['Darius'];
 
   res.json(stats);
 });
