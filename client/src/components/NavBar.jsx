@@ -31,8 +31,10 @@ const NavBar = () => {
                 <i className="fas fa-star"></i> Rezultatai
               </NavLink>
               <NavLink tag={Link} to="/stats">
-                {/* <i className="fas fa-chart-line"></i> */}
                 <i className="far fa-chart-bar"></i> Statistika
+              </NavLink>
+              <NavLink tag={Link} to="/records">
+                <i className="far fa-chart-bar"></i> Rekordai
               </NavLink>
               <NavLink tag={Link} to="/addScore">
                 <i className="fas fa-plus"></i> Įvesti rezultatą

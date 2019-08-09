@@ -5,6 +5,7 @@ const router = express.Router();
 const Team = require('../models/Team');
 const User = require('../models/User');
 const Score = require('../models/Score');
+const Record = require('../models/Record');
 
 router.get('/getTeams', async (req, res) => {
   const teams = await Team.find().sort({ teamName: 1 });
@@ -69,6 +70,19 @@ router.post('/addScore', async (req, res) => {
   const score = new Score(req.body);
   score.save();
   res.json(score);
+});
+
+router.get('/getRecords', async (req, res) => {
+  const records = await Record.find()
+    .sort({ createdAt: -1 })
+
+  res.json(records);
+});
+
+router.post('/addRecord', async (req, res) => {
+  const record = new Record(req.body);
+  record.save();
+  res.json(record);
 });
 
 router.delete('/deleteScore/:id', async (req, res) => {

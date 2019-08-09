@@ -7,6 +7,7 @@ import Random from './components/Random';
 import Scores from './components/Scores';
 import NavBar from './components/NavBar';
 import Stats from './components/Stats';
+import Records from './components/Records';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/addScore/" component={addScore} />
           <Route path="/scores/" component={Scores} />
           <Route path="/stats/" component={Stats} />
+          <Route path="/records/" component={Records} />
         </Router>
       </div>
     </ToastProvider>
