@@ -28,7 +28,7 @@ const Records = () => {
       // setLoading(false)
     };
     fetchStats();
-  }, []);
+  }, [records]);
 
   const toggle = () => {
     setCollapse(!collapse)
