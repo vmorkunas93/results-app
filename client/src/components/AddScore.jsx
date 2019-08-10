@@ -1,30 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import {
-  Container,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter
-} from 'reactstrap';
-import { useToasts } from 'react-toast-notifications'
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Container, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { useToasts } from "react-toast-notifications";
 
 const AddScore = () => {
   const [teams, setTeams] = useState([]);
   const [users, setUsers] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const { addToast } = useToasts()
+  const { addToast } = useToasts();
 
   useEffect(() => {
     const fetchData = async () => {
-      const teamsResult = await axios('/getTeams');
-      const usersResult = await axios('/getUsers');
+      const teamsResult = await axios("/getTeams");
+      const usersResult = await axios("/getUsers");
       setTeams(teamsResult.data);
       setUsers(usersResult.data);
     };
@@ -49,11 +36,26 @@ const AddScore = () => {
 
     const score = { score1, score2 };
 
-    if (!score1.player || !score1.team || !score1.logo || !score1.points || !score2.player || !score2.team || !score2.logo || !score2.points) {
-      addToast('Neįvesta visa reikalinga informacija', { appearance: 'error', autoDismiss: true })
+    if (
+      !score1.player ||
+      !score1.team ||
+      !score1.logo ||
+      !score1.points ||
+      !score2.player ||
+      !score2.team ||
+      !score2.logo ||
+      !score2.points
+    ) {
+      addToast("Neįvesta visa reikalinga informacija", {
+        appearance: "error",
+        autoDismiss: true
+      });
     } else {
-      axios.post('/addScore', score);
-      setShowModal(true);
+      axios.post("/addScore", score);
+      addToast("Rezultatas įvestas sėkmingai", {
+        appearance: "success",
+        autoDismiss: true
+      });
     }
   };
 
@@ -64,23 +66,23 @@ const AddScore = () => {
           <Label>Pirmas žaidėjas</Label>
         </FormGroup>
         <FormGroup>
-          <Input type="select" name="user1" >
+          <Input type="select" name="user1">
             <option value="">Vardas</option>
-            {users.map(user =>
+            {users.map(user => (
               <option value={user.name} key={user._id}>
                 {user.name}
               </option>
-            )}
+            ))}
           </Input>
         </FormGroup>
         <FormGroup>
           <Input type="select" name="team1">
             <option value="">Komanda</option>
-            {teams.map(team =>
+            {teams.map(team => (
               <option value={team.logo} key={team._id}>
                 {team.teamName}
               </option>
-            )}
+            ))}
           </Input>
         </FormGroup>
         <FormGroup>
@@ -90,23 +92,23 @@ const AddScore = () => {
           <Label>Antras žaidėjas</Label>
         </FormGroup>
         <FormGroup>
-          <Input type="select" name="user2" >
+          <Input type="select" name="user2">
             <option value="">Vardas</option>
-            {users.map(user =>
+            {users.map(user => (
               <option value={user.name} key={user._id}>
                 {user.name}
               </option>
-            )}
+            ))}
           </Input>
         </FormGroup>
         <FormGroup>
-          <Input type="select" name="team2" >
+          <Input type="select" name="team2">
             <option value="">Komanda</option>
-            {teams.map(team =>
+            {teams.map(team => (
               <option value={team.logo} key={team._id}>
                 {team.teamName}
               </option>
-            )}
+            ))}
           </Input>
         </FormGroup>
         <FormGroup>
@@ -116,15 +118,6 @@ const AddScore = () => {
           Įrašyti
         </Button>
       </Form>
-      <Modal isOpen={showModal} toggle={() => setShowModal(!showModal)}>
-        <ModalHeader toggle={() => setShowModal(!showModal)} />
-        <ModalBody>Rezultatas sėkmingai įrašytas</ModalBody>
-        <ModalFooter>
-          <Button color="info" tag={Link} to="/scores">
-            Peržiūrėti rezultatus
-          </Button>
-        </ModalFooter>
-      </Modal>
     </Container>
   );
 };

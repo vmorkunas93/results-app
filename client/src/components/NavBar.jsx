@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Collapse,
   Navbar,
@@ -7,8 +7,8 @@ import {
   Nav,
   NavItem,
   NavLink
-} from 'reactstrap';
-import { Link } from 'react-router-dom';
+} from "reactstrap";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -17,7 +17,12 @@ const NavBar = () => {
     <div>
       <Navbar color="dark" dark>
         <NavbarBrand tag={Link} to="/" className="mr-auto">
-          <img className="logo" src="http://loodibee.com/wp-content/uploads/nba-logo-transparent-300x300.png" alt="Logo" title="Logo" />
+          <img
+            className="logo"
+            src="http://loodibee.com/wp-content/uploads/nba-logo-transparent-300x300.png"
+            alt="Logo"
+            title="Logo"
+          />
           Results App
         </NavbarBrand>
         <NavbarToggler
@@ -28,19 +33,16 @@ const NavBar = () => {
           <Nav navbar>
             <NavItem>
               <NavLink tag={Link} to="/scores">
-                <i className="fas fa-star"></i> Rezultatai
-              </NavLink>
-              <NavLink tag={Link} to="/stats">
-                <i className="far fa-chart-bar"></i> Statistika
+                <i className="fab fa-dribbble" /> Rezultatai
               </NavLink>
               <NavLink tag={Link} to="/records">
-                <i className="far fa-chart-bar"></i> Rekordai
+                <i className="fas fa-medal" /> Rekordai
               </NavLink>
-              <NavLink tag={Link} to="/addScore">
-                <i className="fas fa-plus"></i> Įvesti rezultatą
+              <NavLink tag={Link} to="/stats">
+                <i className="far fa-chart-bar" /> Statistika
               </NavLink>
               <NavLink tag={Link} to="/random">
-                <i className="fas fa-random"></i> Atsitiktinė komanda
+                <i className="fas fa-random" /> Atsitiktinė komanda
               </NavLink>
             </NavItem>
           </Nav>
