@@ -8,7 +8,10 @@ import {
   CardTitle,
   CardText,
   Button,
-  Collapse
+  Collapse,
+  FormGroup,
+  Input,
+  Label
 } from "reactstrap";
 import Spinner from "./LoadingSpinner";
 import AddScore from "./AddScore";
@@ -122,14 +125,14 @@ const Scores = () => {
             : "Rezultatų nėra"}
         </div>
       )}
-      <br />
-      Įrašų:
-      <br />
-      <select onChange={e => setPerPage(e.target.value)}>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-      </select>
+      <FormGroup className="perPage">
+        <Label>Įrašų:</Label>
+        <Input type="select" onChange={e => setPerPage(e.target.value)}>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </Input>
+      </FormGroup>
     </Container>
   );
 };
