@@ -27,7 +27,7 @@ const Stats = () => {
           <p>Iš viso sužaista rungtynių: {stats["gamesCount"]}</p>
           <p>
             Darius laimėjo:{" "}
-            {stats["DariusPlayed"]
+            {stats["DariusWon"]
               ? stats["DariusWon"] +
                 "/" +
                 stats["DariusPlayed"] +
@@ -36,7 +36,7 @@ const Stats = () => {
                   2
                 ) +
                 "%"
-              : "0/0 - 0.00%"}
+              : "0/" + stats["DariusPlayed"] + " - 0.00%"}
           </p>
           <p>
             Erikas laimėjo: {stats["ErikasWon"]}/{stats["ErikasPlayed"]} -{" "}
@@ -51,6 +51,45 @@ const Stats = () => {
           </p>
         </div>
       )}
+
+      {/* <table className="stats-table">
+        <tr>
+          <th>Vardas</th>
+          <th>Žaista</th>
+          <th>Laimėta</th>
+          <th>Pralaimėta</th>
+          <th>Proc.</th>
+        </tr>
+        <tr>
+          <td>Darius</td>
+          <td>{stats["DariusPlayed"]}</td>
+          <td>{stats["DariusWon"] || "0"}</td>
+          <td></td>
+          <td>
+            {((stats["DariusWon"] / stats["DariusPlayed"]) * 100).toFixed(2)}
+          </td>
+        </tr>
+        <tr>
+          <td>Erikas</td>
+          <td>{stats["ErikasPlayed"]}</td>
+          <td>{stats["ErikasWon"]}</td>
+          <td>{stats["ErikasPlayed"] - stats["ErikasWon"]}</td>
+          <td>
+            {((stats["ErikasWon"] / stats["ErikasPlayed"]) * 100).toFixed(2)}
+          </td>
+        </tr>
+        <tr>
+          <td>Vytautas</td>
+          <td>{stats["VytautasPlayed"]}</td>
+          <td>{stats["VytautasWon"]}</td>
+          <td>{stats["VytautasPlayed"] - stats["VytautasWon"]}</td>
+          <td>
+            {((stats["VytautasWon"] / stats["VytautasPlayed"]) * 100).toFixed(
+              2
+            )}
+          </td>
+        </tr>
+      </table> */}
     </Container>
   );
 };
