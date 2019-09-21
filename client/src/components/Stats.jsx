@@ -26,7 +26,7 @@ const Stats = () => {
           <h5>Statistika</h5>
           <p>Iš viso sužaista rungtynių: {stats["gamesCount"]}</p>
           <p>
-            Darius laimėjo:{" "}
+            Darius:{" "}
             {stats["DariusWon"]
               ? stats["DariusWon"] +
                 "/" +
@@ -39,11 +39,25 @@ const Stats = () => {
               : "0/" + stats["DariusPlayed"] + " - 0.00%"}
           </p>
           <p>
-            Erikas laimėjo: {stats["ErikasWon"]}/{stats["ErikasPlayed"]} -{" "}
+            Erikas: {stats["ErikasWon"]}/{stats["ErikasPlayed"]} -{" "}
             {((stats["ErikasWon"] / stats["ErikasPlayed"]) * 100).toFixed(2)}%
           </p>
           <p>
-            Vytautas laimėjo: {stats["VytautasWon"]}/{stats["VytautasPlayed"]} -{" "}
+            Tautvydas:{" "}
+            {stats["TautvydasWon"]
+              ? stats["TautvydasWon"] +
+                "/" +
+                stats["TautvydasPlayed"] +
+                " - " +
+                (
+                  (stats["TautvydasWon"] / stats["TautvydasPlayed"]) *
+                  100
+                ).toFixed(2) +
+                "%"
+              : "0/" + stats["TautvydasPlayed"] + " - 0.00%"}
+          </p>
+          <p>
+            Vytautas: {stats["VytautasWon"]}/{stats["VytautasPlayed"]} -{" "}
             {((stats["VytautasWon"] / stats["VytautasPlayed"]) * 100).toFixed(
               2
             )}
