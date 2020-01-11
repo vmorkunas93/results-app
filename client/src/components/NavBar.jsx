@@ -15,7 +15,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <Navbar color="dark" dark>
+      <Navbar color="primary" dark>
         <NavbarBrand tag={Link} to="/" className="mr-auto">
           <img
             className="logo"

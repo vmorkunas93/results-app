@@ -42,25 +42,28 @@ const Scores = () => {
 
   return (
     <Container>
-      <Button color="info" onClick={toggle}>
+      <Button color="primary" onClick={toggle}>
         Įvesti rezultatą
       </Button>
       <Collapse isOpen={collapse}>
         <AddScore />
       </Collapse>
+      <FormGroup className="perPage">
+        <Label>Įrašų:</Label>
+        <Input type="select" onChange={e => setPerPage(e.target.value)}>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="1000">Visi</option>
+        </Input>
+      </FormGroup>
       {loading ? (
         <Spinner />
       ) : (
         <div>
           {scores.length !== 0
             ? scores.map(score => (
-                <Card
-                  body
-                  outline
-                  color="info"
-                  key={score._id}
-                  style={{ margin: "5px auto" }}
-                >
+                <Card body outline color="primary" key={score._id}>
                   <CardTitle>
                     <Moment style={{ float: "right" }} fromNow>
                       {score.createdAt}
@@ -140,15 +143,6 @@ const Scores = () => {
             : "Rezultatų nėra"}
         </div>
       )}
-      <FormGroup className="perPage">
-        <Label>Įrašų:</Label>
-        <Input type="select" onChange={e => setPerPage(e.target.value)}>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="1000">Visi</option>
-        </Input>
-      </FormGroup>
     </Container>
   );
 };

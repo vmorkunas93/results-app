@@ -26,13 +26,7 @@ const Home = () => {
         <div>
           <h5>Paskutiniai rezultatai</h5>
           {scores.map(score => (
-            <Card
-              body
-              outline
-              color="info"
-              key={score._id}
-              style={{ margin: "5px auto" }}
-            >
+            <Card body outline color="primary" key={score._id}>
               <CardTitle>
                 <Moment style={{ float: "right" }} fromNow>
                   {score.createdAt}

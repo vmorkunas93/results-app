@@ -86,7 +86,7 @@ const Records = () => {
 
   return (
     <Container>
-      <Button color="info" onClick={toggle}>
+      <Button color="primary" onClick={toggle}>
         Įvesti rekordą
       </Button>
       <Collapse isOpen={collapse}>
@@ -118,7 +118,7 @@ const Records = () => {
             <FormGroup>
               <Input type="number" name="value" placeholder="Kiekis" />
             </FormGroup>
-            <Button color="info" type="submit">
+            <Button color="primary" type="submit">
               Įrašyti
             </Button>
           </Form>

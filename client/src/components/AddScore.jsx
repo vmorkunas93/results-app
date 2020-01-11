@@ -114,7 +114,7 @@ const AddScore = () => {
         <FormGroup>
           <Input type="number" name="team2score" placeholder="Taškai" />
         </FormGroup>
-        <Button color="info" type="submit">
+        <Button color="primary" type="submit">
           Įrašyti
         </Button>
       </Form>
