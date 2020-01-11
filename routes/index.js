@@ -57,13 +57,9 @@ router.get("/getStats", async (req, res) => {
 
   stats["ErikasWon"] = won["Erikas"];
   stats["VytautasWon"] = won["Vytautas"];
-  stats["DariusWon"] = won["Darius"];
-  stats["TautvydasWon"] = won["Tautvydas"];
 
   stats["ErikasPlayed"] = played["Erikas"];
   stats["VytautasPlayed"] = played["Vytautas"];
-  stats["DariusPlayed"] = played["Darius"];
-  stats["TautvydasPlayed"] = played["Tautvydas"];
 
   res.json(stats);
 });
