@@ -48,6 +48,10 @@ body {
   height: 4.5rem;
 }
 
+.btn {
+  margin: 1rem 0;
+}
+
 .team-logo {
   width: 2.5rem;
 }
