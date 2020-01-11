@@ -5,6 +5,11 @@
   line-height: 1.6;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 .App {
   text-align: center;
   background-color: #fff;
@@ -27,7 +32,20 @@
 }
 
 .card {
-  max-width: 40rem;
+  margin-top: 1rem;
+}
+
+.single-score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.single-record {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
 }
 
 .logo {
@@ -43,17 +61,3 @@
   margin-left: 1rem;
   font-size: 1.8rem;
 }
-
-/* .stats-table,
-td,
-th {
-  margin: auto;
-  border: 1px solid #000;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th,
-td {
-  padding: 0.4rem 0.8rem;
-} */

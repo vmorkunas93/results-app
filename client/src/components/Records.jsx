@@ -116,7 +116,7 @@ const Records = () => {
               </Input>
             </FormGroup>
             <FormGroup>
-              <Input type="number" name="value" placeholder="Kiek" />
+              <Input type="number" name="value" placeholder="Kiekis" />
             </FormGroup>
             <Button color="info" type="submit">
               Įrašyti
@@ -135,18 +135,20 @@ const Records = () => {
             ))}
           </Input>
         </FormGroup>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <div className="records">
+            {records.map(record => (
+              <div key={record._id} className="single-record">
+                <div className="records-user">{record.user}</div>
+                <div className="records-player">{record.player}</div>
+                <div className="records-value">{record.recordValue}</div>
+              </div>
+            ))}
+          </div>
+        )}
       </Container>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <div>
-          {records.map(record => (
-            <div key={record._id}>
-              {record.user} - {record.player} - {record.recordValue}
-            </div>
-          ))}
-        </div>
-      )}
     </Container>
   );
 };

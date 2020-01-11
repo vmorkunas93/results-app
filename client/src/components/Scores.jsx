@@ -6,7 +6,6 @@ import {
   Container,
   Card,
   CardTitle,
-  CardText,
   Button,
   Collapse,
   FormGroup,
@@ -63,7 +62,7 @@ const Scores = () => {
                   style={{ margin: "5px auto" }}
                 >
                   <CardTitle>
-                    <Moment style={{ float: "left" }} fromNow>
+                    <Moment style={{ float: "right" }} fromNow>
                       {score.createdAt}
                     </Moment>
                     {/* <Button
@@ -86,39 +85,55 @@ const Scores = () => {
                   )}
 
                   {score.score1.points > score.score2.points ? (
-                    <CardText>
-                      <img
-                        src={score.score1.logo}
-                        alt="team-logo"
-                        className="team-logo"
-                      />{" "}
-                      <b>
-                        {score.score1.team} {score.score1.points}
-                      </b>{" "}
-                      - {score.score2.points} {score.score2.team}
-                      <img
-                        src={score.score2.logo}
-                        alt="team-logo"
-                        className="team-logo"
-                      />
-                    </CardText>
+                    <div className="scores-wrapper">
+                      <div className="single-score">
+                        <img
+                          src={score.score1.logo}
+                          alt="team-logo"
+                          className="team-logo"
+                        />
+                        <div>
+                          <b>{score.score1.team}</b>
+                        </div>
+                        <div>
+                          <b>{score.score1.points}</b>
+                        </div>
+                      </div>
+                      <div className="single-score">
+                        <img
+                          src={score.score2.logo}
+                          alt="team-logo"
+                          className="team-logo"
+                        />
+                        <div>{score.score2.team}</div>
+                        <div>{score.score2.points}</div>
+                      </div>
+                    </div>
                   ) : (
-                    <CardText>
-                      <img
-                        src={score.score1.logo}
-                        alt="team-logo"
-                        className="team-logo"
-                      />{" "}
-                      {score.score1.team} {score.score1.points} -{" "}
-                      <b>
-                        {score.score2.points} {score.score2.team}
-                      </b>
-                      <img
-                        src={score.score2.logo}
-                        alt="team-logo"
-                        className="team-logo"
-                      />
-                    </CardText>
+                    <div className="scores-wrapper">
+                      <div className="single-score">
+                        <img
+                          src={score.score1.logo}
+                          alt="team-logo"
+                          className="team-logo"
+                        />
+                        <div>{score.score1.team}</div>
+                        <div>{score.score1.points}</div>
+                      </div>
+                      <div className="single-score">
+                        <img
+                          src={score.score2.logo}
+                          alt="team-logo"
+                          className="team-logo"
+                        />
+                        <div>
+                          <b>{score.score2.team}</b>
+                        </div>
+                        <div>
+                          <b>{score.score2.points}</b>
+                        </div>
+                      </div>
+                    </div>
                   )}
                 </Card>
               ))

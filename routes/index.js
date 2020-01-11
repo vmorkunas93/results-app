@@ -77,9 +77,11 @@ router.post("/addScore", async (req, res) => {
 router.get("/getRecords", async (req, res) => {
   const recordType = req.query.recordType;
 
-  const records = await Record.find({ recordType }).sort({
-    recordValue: -1
-  });
+  const records = await Record.find({ recordType })
+    .sort({
+      recordValue: -1
+    })
+    .limit(5);
   res.json(records);
 });
 
