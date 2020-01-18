@@ -60,7 +60,7 @@ const Scores = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div>
+        <React.Fragment>
           {scores.length !== 0
             ? scores.map(score => (
                 <Card body outline color="primary" key={score._id}>
@@ -141,7 +141,7 @@ const Scores = () => {
                 </Card>
               ))
             : "Rezultatų nėra"}
-        </div>
+        </React.Fragment>
       )}
     </Container>
   );

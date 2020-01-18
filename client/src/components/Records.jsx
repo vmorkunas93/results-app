@@ -125,7 +125,7 @@ const Records = () => {
         </Container>
       </Collapse>
       <Container>
-        <h5>Rekordai</h5>
+        <h3 className="title">Rekordai</h3>
         <FormGroup>
           <Input type="select" onChange={handleOnChange}>
             {types.map(type => (

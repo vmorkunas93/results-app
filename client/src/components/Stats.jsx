@@ -22,8 +22,8 @@ const Stats = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div>
-          <h5>Statistika</h5>
+        <React.Fragment>
+          <h3 className="title">Statistika</h3>
           <p>Iš viso sužaista rungtynių: {stats["gamesCount"]}</p>
           <p>
             Erikas: {stats["ErikasWon"]}/{stats["ErikasPlayed"]} -{" "}
@@ -36,7 +36,7 @@ const Stats = () => {
             )}
             %
           </p>
-        </div>
+        </React.Fragment>
       )}
     </Container>
   );

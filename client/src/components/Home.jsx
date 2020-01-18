@@ -23,8 +23,8 @@ const Home = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div>
-          <h5>Paskutiniai rezultatai</h5>
+        <React.Fragment>
+          <h3 className="title">Paskutiniai rezultatai</h3>
           {scores.map(score => (
             <Card body outline color="primary" key={score._id}>
               <CardTitle>
@@ -103,7 +103,7 @@ const Home = () => {
               )}
             </Card>
           ))}
-        </div>
+        </React.Fragment>
       )}
     </Container>
   );
