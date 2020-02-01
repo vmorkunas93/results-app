@@ -23,7 +23,7 @@ const Random = () => {
   return (
     <Container>
       <Button color="primary" onClick={onClick}>
-        Išrinkti komandą
+        Pick Random Team
       </Button>
       {randomTeam && (
         <div>

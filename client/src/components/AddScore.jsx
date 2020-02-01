@@ -46,13 +46,13 @@ const AddScore = () => {
       !score2.logo ||
       !score2.points
     ) {
-      addToast("Neįvesta visa reikalinga informacija", {
+      addToast("Enter all required information", {
         appearance: "error",
         autoDismiss: true
       });
     } else {
       axios.post("/addScore", score);
-      addToast("Rezultatas įvestas sėkmingai", {
+      addToast("Score added successfully", {
         appearance: "success",
         autoDismiss: true
       });
@@ -63,11 +63,11 @@ const AddScore = () => {
     <Container>
       <Form onSubmit={onSubmit}>
         <FormGroup>
-          <Label>Pirmas žaidėjas</Label>
+          <Label>First player</Label>
         </FormGroup>
         <FormGroup>
           <Input type="select" name="user1">
-            <option value="">Vardas</option>
+            <option value="">Name</option>
             {users.map(user => (
               <option value={user.name} key={user._id}>
                 {user.name}
@@ -77,7 +77,7 @@ const AddScore = () => {
         </FormGroup>
         <FormGroup>
           <Input type="select" name="team1">
-            <option value="">Komanda</option>
+            <option value="">Team</option>
             {teams.map(team => (
               <option value={team.logo} key={team._id}>
                 {team.teamName}
@@ -86,14 +86,14 @@ const AddScore = () => {
           </Input>
         </FormGroup>
         <FormGroup>
-          <Input type="number" name="team1score" placeholder="Taškai" />
+          <Input type="number" name="team1score" placeholder="Points" />
         </FormGroup>
         <FormGroup>
-          <Label>Antras žaidėjas</Label>
+          <Label>Second player</Label>
         </FormGroup>
         <FormGroup>
           <Input type="select" name="user2">
-            <option value="">Vardas</option>
+            <option value="">Name</option>
             {users.map(user => (
               <option value={user.name} key={user._id}>
                 {user.name}
@@ -103,7 +103,7 @@ const AddScore = () => {
         </FormGroup>
         <FormGroup>
           <Input type="select" name="team2">
-            <option value="">Komanda</option>
+            <option value="">Team</option>
             {teams.map(team => (
               <option value={team.logo} key={team._id}>
                 {team.teamName}
@@ -112,10 +112,10 @@ const AddScore = () => {
           </Input>
         </FormGroup>
         <FormGroup>
-          <Input type="number" name="team2score" placeholder="Taškai" />
+          <Input type="number" name="team2score" placeholder="Points" />
         </FormGroup>
         <Button color="primary" type="submit">
-          Įrašyti
+          Submit
         </Button>
       </Form>
     </Container>

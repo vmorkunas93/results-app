@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Moment from "react-moment";
-import "moment/locale/lt";
+// import "moment/locale/lt";
 import {
   Container,
   Card,
@@ -43,18 +43,18 @@ const Scores = () => {
   return (
     <Container>
       <Button color="primary" onClick={toggle}>
-        Įvesti rezultatą
+        Add New Score
       </Button>
       <Collapse isOpen={collapse}>
         <AddScore />
       </Collapse>
       <FormGroup className="perPage">
-        <Label>Įrašų:</Label>
+        <Label>Scores per page:</Label>
         <Input type="select" onChange={e => setPerPage(e.target.value)}>
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="20">20</option>
-          <option value="1000">Visi</option>
+          <option value="1000">All</option>
         </Input>
       </FormGroup>
       {loading ? (
@@ -140,7 +140,7 @@ const Scores = () => {
                   )}
                 </Card>
               ))
-            : "Rezultatų nėra"}
+            : "No scores to show"}
         </React.Fragment>
       )}
     </Container>

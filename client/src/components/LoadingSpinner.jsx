@@ -4,7 +4,7 @@ const LoadingSpinner = () => {
   return (
     <div className="spinner">
       <i className="fas fa-circle-notch fa-spin fa-2x"></i>
-      <span className="loading">Kraunama...</span>
+      <span className="loading">Loading...</span>
     </div>
   );
 };

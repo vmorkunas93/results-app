@@ -30,36 +30,45 @@ router.get("/getScores", async (req, res) => {
 router.get("/getStats", async (req, res) => {
   const stats = {};
   const winners = [];
-  const played = [];
   const won = {};
+  let vytautasScored = 0;
+  let erikasScored = 0;
 
   const kiek = await Score.countDocuments({});
-  stats["gamesCount"] = kiek;
+  stats["gamesPlayed"] = kiek;
 
   const scores = await Score.find({});
 
   scores.forEach(score => {
+    // Find the winner of each game
     if (score.score1.points > score.score2.points) {
       winners.push(score.score1.player);
     } else {
       winners.push(score.score2.player);
     }
-    played.push(score.score1.player, score.score2.player);
+
+    // Find average scored points
+    if (score.score1.player === "Vytautas") {
+      vytautasScored += score.score1.points;
+      erikasScored += score.score2.points;
+    } else if (score.score1.player === "Erikas") {
+      erikasScored += score.score1.points;
+      vytautasScored += score.score2.points;
+    }
   });
 
   winners.forEach(name => {
     won[name] = (won[name] || 0) + 1;
   });
 
-  played.forEach(name => {
-    played[name] = (played[name] || 0) + 1;
-  });
-
   stats["ErikasWon"] = won["Erikas"];
   stats["VytautasWon"] = won["Vytautas"];
-
-  stats["ErikasPlayed"] = played["Erikas"];
-  stats["VytautasPlayed"] = played["Vytautas"];
+  stats["ErikasTotalPts"] = erikasScored;
+  stats["VytautasTotalPts"] = vytautasScored;
+  stats["ErikasAvgPts"] = (erikasScored / kiek).toFixed(2);
+  stats["VytautasAvgPts"] = (vytautasScored / kiek).toFixed(2);
+  stats["ErikasWonPct"] = ((stats["ErikasWon"] / kiek) * 100).toFixed(2);
+  stats["VytautasWonPct"] = ((stats["VytautasWon"] / kiek) * 100).toFixed(2);
 
   res.json(stats);
 });

@@ -24,7 +24,7 @@ const Home = () => {
         <Spinner />
       ) : (
         <React.Fragment>
-          <h3 className="title">Paskutiniai rezultatai</h3>
+          <h3 className="title">Latest Scores</h3>
           {scores.map(score => (
             <Card body outline color="primary" key={score._id}>
               <CardTitle>

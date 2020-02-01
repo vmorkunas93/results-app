@@ -67,12 +67,12 @@ const Records = () => {
       !record.recordType ||
       !record.recordValue
     ) {
-      addToast("Neįvesta visa reikalinga informacija", {
+      addToast("Enter all required information", {
         appearance: "error",
         autoDismiss: true
       });
     } else {
-      addToast("Rekordas įvestas sėkmingai", {
+      addToast("Record added successfully", {
         appearance: "success",
         autoDismiss: true
       });
@@ -87,14 +87,14 @@ const Records = () => {
   return (
     <Container>
       <Button color="primary" onClick={toggle}>
-        Įvesti rekordą
+        Add New Record
       </Button>
       <Collapse isOpen={collapse}>
         <Container>
           <Form onSubmit={onSubmit}>
             <FormGroup>
               <Input type="select" name="user">
-                <option value="">Vardas</option>
+                <option value="">Name</option>
                 {users.map(user => (
                   <option value={user.name} key={user._id}>
                     {user.name}
@@ -103,11 +103,11 @@ const Records = () => {
               </Input>
             </FormGroup>
             <FormGroup>
-              <Input type="text" name="player" placeholder="Žaidėjas" />
+              <Input type="text" name="player" placeholder="Player Name" />
             </FormGroup>
             <FormGroup>
               <Input type="select" name="type">
-                <option value="">Tipas</option>
+                <option value="">Category</option>
                 {types.map(type => (
                   <option value={type.name} key={type._id}>
                     {type.name}
@@ -116,16 +116,16 @@ const Records = () => {
               </Input>
             </FormGroup>
             <FormGroup>
-              <Input type="number" name="value" placeholder="Kiekis" />
+              <Input type="number" name="value" placeholder="Value" />
             </FormGroup>
             <Button color="primary" type="submit">
-              Įrašyti
+              Submit
             </Button>
           </Form>
         </Container>
       </Collapse>
       <Container>
-        <h3 className="title">Rekordai</h3>
+        <h3 className="title">Records</h3>
         <FormGroup>
           <Input type="select" onChange={handleOnChange}>
             {types.map(type => (

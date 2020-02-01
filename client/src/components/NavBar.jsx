@@ -32,16 +32,16 @@ const NavBar = () => {
         <Nav navbar>
           <NavItem>
             <NavLink tag={Link} to="/scores">
-              <i className="fab fa-dribbble" /> Rezultatai
+              <i className="fab fa-dribbble" /> Results
             </NavLink>
             <NavLink tag={Link} to="/records">
-              <i className="fas fa-medal" /> Rekordai
+              <i className="fas fa-medal" /> Records
             </NavLink>
             <NavLink tag={Link} to="/stats">
-              <i className="far fa-chart-bar" /> Statistika
+              <i className="far fa-chart-bar" /> Stats
             </NavLink>
             <NavLink tag={Link} to="/random">
-              <i className="fas fa-random" /> Atsitiktinė komanda
+              <i className="fas fa-random" /> Random Team
             </NavLink>
           </NavItem>
         </Nav>

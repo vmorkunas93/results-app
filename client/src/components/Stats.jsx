@@ -23,19 +23,22 @@ const Stats = () => {
         <Spinner />
       ) : (
         <React.Fragment>
-          <h3 className="title">Statistika</h3>
-          <p>Iš viso sužaista rungtynių: {stats["gamesCount"]}</p>
+          <h3 className="title">Stats</h3>
+          <p>Games Played: {stats["gamesPlayed"]}</p>
           <p>
-            Erikas: {stats["ErikasWon"]}/{stats["ErikasPlayed"]} -{" "}
-            {((stats["ErikasWon"] / stats["ErikasPlayed"]) * 100).toFixed(2)}%
+            Erikas: {stats["ErikasWon"]}/{stats["gamesPlayed"]} -{" "}
+            {stats["ErikasWonPct"]}%
           </p>
           <p>
-            Vytautas: {stats["VytautasWon"]}/{stats["VytautasPlayed"]} -{" "}
-            {((stats["VytautasWon"] / stats["VytautasPlayed"]) * 100).toFixed(
-              2
-            )}
-            %
+            Vytautas: {stats["VytautasWon"]}/{stats["gamesPlayed"]} -{" "}
+            {stats["VytautasWonPct"]}%
           </p>
+          <h6>Total Points</h6>
+          <p>Erikas: {stats["ErikasTotalPts"]}</p>
+          <p>Vytautas: {stats["VytautasTotalPts"]}</p>
+          <h6>Points Per Game</h6>
+          <p>Erikas: {stats["ErikasAvgPts"]}</p>
+          <p>Vytautas: {stats["VytautasAvgPts"]}</p>
         </React.Fragment>
       )}
     </Container>

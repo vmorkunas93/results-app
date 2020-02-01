@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 html,
@@ -18,8 +18,13 @@ body {
 }
 
 .perPage {
-  width: 75px;
+  width: 150px;
   margin: auto;
+}
+
+.perPage select {
+  width: 75px;
+  margin: 0 auto;
 }
 
 .modal-body {
