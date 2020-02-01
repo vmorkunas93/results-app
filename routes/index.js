@@ -62,13 +62,14 @@ router.get("/getStats", async (req, res) => {
   });
 
   stats["ErikasWon"] = won["Erikas"];
-  stats["VytautasWon"] = won["Vytautas"];
   stats["ErikasTotalPts"] = erikasScored;
+  stats["ErikasAvgPts"] = (erikasScored / kiek).toFixed(1);
+  stats["ErikasWonPct"] = ((stats["ErikasWon"] / kiek) * 100).toFixed(1);
+
+  stats["VytautasWon"] = won["Vytautas"];
   stats["VytautasTotalPts"] = vytautasScored;
-  stats["ErikasAvgPts"] = (erikasScored / kiek).toFixed(2);
-  stats["VytautasAvgPts"] = (vytautasScored / kiek).toFixed(2);
-  stats["ErikasWonPct"] = ((stats["ErikasWon"] / kiek) * 100).toFixed(2);
-  stats["VytautasWonPct"] = ((stats["VytautasWon"] / kiek) * 100).toFixed(2);
+  stats["VytautasAvgPts"] = (vytautasScored / kiek).toFixed(1);
+  stats["VytautasWonPct"] = ((stats["VytautasWon"] / kiek) * 100).toFixed(1);
 
   res.json(stats);
 });
