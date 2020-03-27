@@ -61,11 +61,6 @@ body {
   width: 2.5rem;
 }
 
-.loading {
-  margin-left: 1rem;
-  font-size: 1.8rem;
-}
-
 .title,
 .spinner {
   margin: 1rem 0;

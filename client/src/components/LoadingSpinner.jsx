@@ -3,8 +3,7 @@ import React from "react";
 const LoadingSpinner = () => {
   return (
     <div className="spinner">
-      <i className="fas fa-circle-notch fa-spin fa-2x"></i>
-      <span className="loading">Loading...</span>
+      <i className="fas fa-basketball-ball fa-spin fa-5x"></i>
     </div>
   );
 };
