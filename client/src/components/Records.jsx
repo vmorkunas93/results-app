@@ -141,8 +141,10 @@ const Records = () => {
           <div className="records">
             {records.map(record => (
               <div key={record._id} className="single-record">
-                <div className="records-user">{record.user}</div>
-                <div className="records-player">{record.player}</div>
+                <div>
+                  <div className="records-player">{record.player}</div>
+                  <div className="records-user">{record.user}</div>
+                </div>
                 <div className="records-value">{record.recordValue}</div>
               </div>
             ))}

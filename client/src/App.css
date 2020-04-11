@@ -45,7 +45,40 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.single-record .records-player {
+  font-weight: 500;
+}
+
+.single-record .records-user {
+  text-align: left;
+  font-style: italic;
+  font-size: 0.7rem;
+  color: rgb(165, 165, 165);
+}
+
+.single-record .records-value {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.single-record:first-child .records-player {
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.single-record:first-child .records-user {
+  text-align: left;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgb(165, 165, 165);
+}
+
+.single-record:first-child .records-value {
+  font-size: 3.5rem;
+  font-weight: 400;
 }
 
 .logo {
