@@ -22,10 +22,9 @@ const Stats = () => {
     <Container>
       <h3 className="title">Stats</h3>
       <FormGroup className="perPage">
-        <Label>2K edition:</Label>
         <Input type="select" onChange={(e) => setEdition(e.target.value)}>
-          <option value="2k19">2k19</option>
-          <option value="2k20">2k20</option>
+          <option value="2k19">2K19</option>
+          <option value="2k20">2K20</option>
         </Input>
       </FormGroup>
       {loading ? (
