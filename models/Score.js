@@ -1,47 +1,51 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const ScoreSchema = new Schema({
+  edition: {
+    type: String,
+    required: true,
+  },
   score1: {
     player: {
       type: String,
-      required: true
+      required: true,
     },
     team: {
       type: String,
-      required: true
+      required: true,
     },
     logo: {
       type: String,
-      required: true
+      required: true,
     },
     points: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   score2: {
     player: {
       type: String,
-      required: true
+      required: true,
     },
     team: {
       type: String,
-      required: true
+      required: true,
     },
     logo: {
       type: String,
-      required: true
+      required: true,
     },
     points: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   createdAt: {
     type: Date,
-    default: Date.now
-  }
-})
+    default: Date.now,
+  },
+});
 
-module.exports = Score = mongoose.model("score", ScoreSchema)
+module.exports = Score = mongoose.model("score", ScoreSchema);

@@ -19,59 +19,108 @@ router.get("/getUsers", async (req, res) => {
 
 router.get("/getScores", async (req, res) => {
   const limit = parseInt(req.query.limit);
+  const edition = req.query.edition;
 
-  const scores = await Score.find()
-    .sort({ createdAt: -1 })
-    .limit(limit);
-
-  res.json(scores);
+  if (!edition || edition === "2k19") {
+    const scores = await Score.find({ edition: { $ne: "2k20" } })
+      .sort({ createdAt: -1 })
+      .limit(limit);
+    res.json(scores);
+  } else {
+    const scores = await Score.find({ edition })
+      .sort({ createdAt: -1 })
+      .limit(limit);
+    res.json(scores);
+  }
 });
 
 router.get("/getStats", async (req, res) => {
+  const edition = req.query.edition;
   const stats = {};
   const winners = [];
   const won = {};
   let vytautasScored = 0;
   let erikasScored = 0;
 
-  const kiek = await Score.countDocuments({});
-  stats["gamesPlayed"] = kiek;
+  if (!edition || edition === "2k19") {
+    const kiek = await Score.countDocuments({ edition: { $ne: "2k20" } });
+    stats["gamesPlayed"] = kiek;
 
-  const scores = await Score.find({});
+    const scores = await Score.find({ edition: { $ne: "2k20" } });
 
-  scores.forEach(score => {
-    // Find the winner of each game
-    if (score.score1.points > score.score2.points) {
-      winners.push(score.score1.player);
-    } else {
-      winners.push(score.score2.player);
-    }
+    scores.forEach((score) => {
+      // Find the winner of each game
+      if (score.score1.points > score.score2.points) {
+        winners.push(score.score1.player);
+      } else {
+        winners.push(score.score2.player);
+      }
 
-    // Find average scored points
-    if (score.score1.player === "Vytautas") {
-      vytautasScored += score.score1.points;
-      erikasScored += score.score2.points;
-    } else if (score.score1.player === "Erikas") {
-      erikasScored += score.score1.points;
-      vytautasScored += score.score2.points;
-    }
-  });
+      // Find total scored points
+      if (score.score1.player === "Vytautas") {
+        vytautasScored += score.score1.points;
+        erikasScored += score.score2.points;
+      } else if (score.score1.player === "Erikas") {
+        erikasScored += score.score1.points;
+        vytautasScored += score.score2.points;
+      }
+    });
 
-  winners.forEach(name => {
-    won[name] = (won[name] || 0) + 1;
-  });
+    winners.forEach((name) => {
+      won[name] = (won[name] || 0) + 1;
+    });
 
-  stats["ErikasWon"] = won["Erikas"];
-  stats["ErikasTotalPts"] = erikasScored;
-  stats["ErikasAvgPts"] = (erikasScored / kiek).toFixed(1);
-  stats["ErikasWonPct"] = ((stats["ErikasWon"] / kiek) * 100).toFixed(1);
+    stats["ErikasWon"] = won["Erikas"];
+    stats["ErikasTotalPts"] = erikasScored;
+    stats["ErikasAvgPts"] = (erikasScored / kiek).toFixed(1);
+    stats["ErikasWonPct"] = ((stats["ErikasWon"] / kiek) * 100).toFixed(1);
 
-  stats["VytautasWon"] = won["Vytautas"];
-  stats["VytautasTotalPts"] = vytautasScored;
-  stats["VytautasAvgPts"] = (vytautasScored / kiek).toFixed(1);
-  stats["VytautasWonPct"] = ((stats["VytautasWon"] / kiek) * 100).toFixed(1);
+    stats["VytautasWon"] = won["Vytautas"];
+    stats["VytautasTotalPts"] = vytautasScored;
+    stats["VytautasAvgPts"] = (vytautasScored / kiek).toFixed(1);
+    stats["VytautasWonPct"] = ((stats["VytautasWon"] / kiek) * 100).toFixed(1);
 
-  res.json(stats);
+    res.json(stats);
+  } else {
+    const kiek = await Score.countDocuments({ edition });
+    stats["gamesPlayed"] = kiek;
+
+    const scores = await Score.find({ edition });
+
+    scores.forEach((score) => {
+      // Find the winner of each game
+      if (score.score1.points > score.score2.points) {
+        winners.push(score.score1.player);
+      } else {
+        winners.push(score.score2.player);
+      }
+
+      // Find total scored points
+      if (score.score1.player === "Vytautas") {
+        vytautasScored += score.score1.points;
+        erikasScored += score.score2.points;
+      } else if (score.score1.player === "Erikas") {
+        erikasScored += score.score1.points;
+        vytautasScored += score.score2.points;
+      }
+    });
+
+    winners.forEach((name) => {
+      won[name] = (won[name] || 0) + 1;
+    });
+
+    stats["ErikasWon"] = won["Erikas"];
+    stats["ErikasTotalPts"] = erikasScored;
+    stats["ErikasAvgPts"] = (erikasScored / kiek).toFixed(1);
+    stats["ErikasWonPct"] = ((stats["ErikasWon"] / kiek) * 100).toFixed(1);
+
+    stats["VytautasWon"] = won["Vytautas"];
+    stats["VytautasTotalPts"] = vytautasScored;
+    stats["VytautasAvgPts"] = (vytautasScored / kiek).toFixed(1);
+    stats["VytautasWonPct"] = ((stats["VytautasWon"] / kiek) * 100).toFixed(1);
+
+    res.json(stats);
+  }
 });
 
 router.post("/addScore", async (req, res) => {
@@ -85,7 +134,7 @@ router.get("/getRecords", async (req, res) => {
 
   const records = await Record.find({ recordType })
     .sort({
-      recordValue: -1
+      recordValue: -1,
     })
     .limit(5);
   res.json(records);

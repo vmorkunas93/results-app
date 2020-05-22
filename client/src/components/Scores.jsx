@@ -8,9 +8,10 @@ import {
   CardTitle,
   Button,
   Collapse,
+  Form,
   FormGroup,
   Input,
-  Label
+  Label,
 } from "reactstrap";
 import Spinner from "./LoadingSpinner";
 import AddScore from "./AddScore";
@@ -20,16 +21,19 @@ const Scores = () => {
   const [perPage, setPerPage] = useState(5);
   const [loading, setLoading] = useState(false);
   const [collapse, setCollapse] = useState(false);
+  const [edition, setEdition] = useState("");
 
   useEffect(() => {
     const fetchScores = async () => {
       setLoading(true);
-      const scoreRes = await axios(`/getScores?limit=${perPage}`);
+      const scoreRes = await axios(
+        `/getScores?limit=${perPage}&edition=${edition}`
+      );
       setScores(scoreRes.data);
       setLoading(false);
     };
     fetchScores();
-  }, [perPage]);
+  }, [perPage, edition]);
 
   // const onDelete = id => {
   //   setScores(scores.filter(score => score._id !== id));
@@ -48,21 +52,30 @@ const Scores = () => {
       <Collapse isOpen={collapse}>
         <AddScore />
       </Collapse>
-      <FormGroup className="perPage">
-        <Label>Scores per page:</Label>
-        <Input type="select" onChange={e => setPerPage(e.target.value)}>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="1000">All</option>
-        </Input>
-      </FormGroup>
+      <Form>
+        <FormGroup className="perPage">
+          <Label>2K edition:</Label>
+          <Input type="select" onChange={(e) => setEdition(e.target.value)}>
+            <option value="2k19">2k19</option>
+            <option value="2k20">2k20</option>
+          </Input>
+        </FormGroup>
+        <FormGroup className="perPage">
+          <Label>Scores per page:</Label>
+          <Input type="select" onChange={(e) => setPerPage(e.target.value)}>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="1000">All</option>
+          </Input>
+        </FormGroup>
+      </Form>
       {loading ? (
         <Spinner />
       ) : (
         <React.Fragment>
           {scores.length !== 0
-            ? scores.map(score => (
+            ? scores.map((score) => (
                 <Card body outline color="primary" key={score._id}>
                   <CardTitle>
                     <Moment style={{ float: "right" }} fromNow>

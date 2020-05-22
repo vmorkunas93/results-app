@@ -1,29 +1,37 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Container } from "reactstrap";
+import { Container, FormGroup, Label, Input } from "reactstrap";
 import Spinner from "./LoadingSpinner";
 
 const Stats = () => {
   const [stats, setStats] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [edition, setEdition] = useState("");
 
   useEffect(() => {
     const fetchStats = async () => {
       setLoading(true);
-      const statsRes = await axios(`/getStats`);
+      const statsRes = await axios(`/getStats?edition=${edition}`);
       setStats(statsRes.data);
       setLoading(false);
     };
     fetchStats();
-  }, []);
+  }, [edition]);
 
   return (
     <Container>
+      <h3 className="title">Stats</h3>
+      <FormGroup className="perPage">
+        <Label>2K edition:</Label>
+        <Input type="select" onChange={(e) => setEdition(e.target.value)}>
+          <option value="2k19">2k19</option>
+          <option value="2k20">2k20</option>
+        </Input>
+      </FormGroup>
       {loading ? (
         <Spinner />
       ) : (
         <React.Fragment>
-          <h3 className="title">Stats</h3>
           <p>{stats["gamesPlayed"]} Games Played</p>
           {/* <p>
             Erikas: {stats["ErikasWon"]}/{stats["gamesPlayed"]} -{" "}
